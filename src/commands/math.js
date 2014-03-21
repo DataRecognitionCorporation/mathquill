@@ -396,6 +396,19 @@ var MathBlock = P(MathElement, function(_, _super) {
 
     cmd.createLeftOf(cursor);
   };
+  _.getMaxNesting = function() {
+    var findMaxMathBlocks = function(child) {
+      var maxDepth = 0;
+      for (var el = child.ends[L]; el !== 0; el = el[R])
+        maxDepth = Math.max(maxDepth, findMaxMathBlocks(el));
+
+      if (child instanceof MathBlock)
+        return maxDepth + 1;
+      else
+        return maxDepth;
+    };
+    return findMaxMathBlocks(this);
+  }
 
   _.focus = function() {
     this.jQ.addClass('hasCursor');
