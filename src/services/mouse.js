@@ -3,14 +3,23 @@
  *******************************************************/
 
 Controller.open(function(_) {
+  var iOS = false;
+  if (navigator.platform === 'iPad' || navigator.platform === 'iPhone' || navigator.platform === 'iPod') {
+    iOS = true;
+  }
+  _.iOS = function() { return iOS; };
+
   _.delegateMouseEvents = function() {
     var ultimateRootjQ = this.root.jQ;
+    var iOS = this.iOS();
+
     //drag-to-select event handling
     this.container.bind('mousedown.mathquill', function(e) {
       var rootjQ = $(e.target).closest('.mathquill-root-block');
       var root = Node.byId[rootjQ.attr(mqBlockId) || ultimateRootjQ.attr(mqBlockId)];
       var ctrlr = root.controller, cursor = ctrlr.cursor, blink = cursor.blink;
       var textareaSpan = ctrlr.textareaSpan, textarea = ctrlr.textarea;
+      var mouseStart = {x: e.pageX, y: e.pageY};
 
       function mousemove(e) {
         ctrlr.seek($(e.target), e.pageX, e.pageY).cursor.select();
@@ -37,6 +46,9 @@ Controller.open(function(_) {
         if (!cursor.selection) {
           if (ctrlr.editable) {
             cursor.show();
+            if (iOS && e.pageX === mouseStart.x && e.pageY === mouseStart.y) {
+              textarea.focus();
+            }
           }
           else {
             textareaSpan.detach();

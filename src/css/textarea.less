@@ -13,7 +13,10 @@
     // the only way to hide the textarea
     // *and the blinking insertion point* in IE
     position: absolute;
-    clip: rect(1em 1em 1em 1em);
+    clip: rect(1px 1px 1px 1px);
     resize: none; // hotfix: https://code.google.com/p/chromium/issues/detail?id=355199#c1
+    width: 1px;
+    height: 1px;
+    font-size: 1px;
   }
 }
