@@ -236,6 +236,11 @@ CharCmds['*'] = LatexCmds.sdot = LatexCmds.cdot =
 LatexCmds['='] = bind(BinaryOperator, '=', '=');
 LatexCmds['<'] = bind(BinaryOperator, '<', '&lt;');
 LatexCmds['>'] = bind(BinaryOperator, '>', '&gt;');
+LatexCmds.notsimilar = bind(VanillaSymbol, '\\notsimilar ', '&#8769;');
+LatexCmds.notapprox = bind(VanillaSymbol, '\\notapprox ', '&#8777;');
+LatexCmds.notcongruent = bind(VanillaSymbol, '\\notcongruent ', '&#8775;');
+LatexCmds.parallelogram = bind(VanillaSymbol, '\\parallelogram ', '&#9649;');
+LatexCmds.forwardslash = bind(VanillaSymbol, '\\forwardslash ', '&#8260;');
 
 LatexCmds.notin =
 LatexCmds.sim =
@@ -489,6 +494,8 @@ LatexCmds.AA = LatexCmds.Angstrom = LatexCmds.angstrom =
 
 LatexCmds.ring = LatexCmds.circ = LatexCmds.circle =
   bind(VanillaSymbol,'\\circ ','&#8728;');
+LatexCmds.circleddot =
+  bind(VanillaSymbol,'\\circleddot ','&#8857;');
 
 LatexCmds.bull = LatexCmds.bullet = bind(VanillaSymbol,'\\bullet ','&bull;');
 
@@ -629,4 +636,3 @@ LatexCmds.lim = NonItalicizedMultiCharFunction;
       NonItalicizedMultiCharFunction;
   }
 }());
-
