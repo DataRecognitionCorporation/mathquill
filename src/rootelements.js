@@ -63,7 +63,7 @@ function createRoot(jQ, root, textbox, editable) {
 
   var iOS = false, android = false,
     p = navigator.platform;
-  if (p === 'iPad' || p === 'iPhone' || p === 'iPod') {
+  if (p === 'iPad' || p === 'iPhone' || p === 'iPod'  || (navigator.userAgent.includes("Mac") && navigator.maxTouchPoints > 0)) {
     iOS = true;
   }
   if (p === 'Android') {
