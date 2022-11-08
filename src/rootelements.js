@@ -94,7 +94,10 @@ function createRoot(jQ, root, textbox, editable) {
       // cursor.seek needs to be refactored.
       delete e.target;
 
-      return mousemove(e);
+      if (iOS)
+        return false;
+      else
+        return mousemove(e);
     }
 
     function mouseup(e) {
